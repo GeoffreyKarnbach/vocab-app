@@ -12,13 +12,7 @@ export class Globals {
       return 'http://127.0.0.1:8888';
     } else {
       // assume deployed somewhere and backend is available at same host/port as frontend
-      return (
-        window.location.protocol +
-        '//' +
-        window.location.host +
-        window.location.pathname +
-        'api/v1'
-      );
+      return 'https://dergoyote2.eu.pythonanywhere.com';
     }
   }
 }
