@@ -1,0 +1,65 @@
+.exercise-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.counter {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.exercise-item {
+  background-color: #f4f4f4;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.options {
+  margin-top: 20px;
+}
+
+.option-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.option-btn.selected {
+  background-color: #4caf50;
+}
+
+.option-btn.correct {
+  background-color: #4caf50;
+}
+
+.option-btn.wrong {
+  background-color: #f44336;
+}
+
+.next-container {
+  margin-top: 30px;
+}
+
+.btn-next {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loading {
+  font-size: 18px;
+  color: #888;
+}

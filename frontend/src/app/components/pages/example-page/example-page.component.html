@@ -1,14 +1,113 @@
-<h1>UI Elements overview</h1>
-<hr />
-<h2>Image View</h2>
-<app-image-view
-  [imageURLs]="[
-    'https://picsum.photos/500',
-    'https://picsum.photos/600',
-    'https://picsum.photos/700'
-  ]"
-></app-image-view>
-<hr />
-<h2>Custom Calendar</h2>
-<app-custom-calendar></app-custom-calendar>
-<hr />
+<div class="session-history">
+  <div class="summary">
+    <br />
+    <a [routerLink]="['exercise']" class="btn btn-success mb-3">
+      Practice now!
+    </a>
+
+    <h2>Statistics</h2>
+    <p><strong>Total Sessions:</strong> {{ sessionHistory?.sessionCount }}</p>
+    <p>
+      <strong>Total Correct Answers:</strong> {{ sessionHistory?.totalCorrect }}
+    </p>
+    <p>
+      <strong>Total Words Practiced:</strong> {{ sessionHistory?.totalWords }}
+    </p>
+    <p>
+      <strong>Total Duration:</strong>
+      {{ sessionHistory?.totalDuration }} seconds
+    </p>
+  </div>
+
+  <div class="word-statistics">
+    <div class="statistics-tables">
+      <div class="table-container">
+        <h3>Most Practiced Words</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Practice Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let word of sessionHistory?.mostPracticedWords">
+              <td>{{ word.english }}</td>
+              <td>{{ word.totalCount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-container">
+        <h3>Most Accurate Words</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Accuracy (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let word of sessionHistory?.mostAccurateWords">
+              <td>{{ word.english }}</td>
+              <td>{{ calculateAccuracy(word) | number : "1.0-2" }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-container">
+        <h3>Most Difficult Words</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Accuracy (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let word of sessionHistory?.mostDifficultWords">
+              <td>{{ word.english }}</td>
+              <td>{{ calculateDifficulty(word) | number : "1.0-2" }}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="past-sessions">
+    <h3>Past Sessions</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Correct Words</th>
+          <th>Total Words</th>
+          <th>Duration (min:sec)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let session of paginatedSessions">
+          <td>{{ session.timestamp | date : "dd.MM.yyyy HH:mm" }}</td>
+          <td>{{ session.correct_words }}</td>
+          <td>{{ session.total_words }}</td>
+          <td>{{ formatDuration(session.duration) }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage <= 1">
+        Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button
+        (click)="goToPage(currentPage + 1)"
+        [disabled]="currentPage >= totalPages"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>

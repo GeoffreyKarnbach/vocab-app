@@ -46,21 +46,23 @@ export class UserService {
   }
 
   saveCurrentUserToken(token: string): void {
-    token = token.split(' ')[1];
-    localStorage.setItem('token', token);
+    // token is actually a map, we want the value of the "token" key
+    console.log(token);
+    const tokenValue = JSON.parse(token).token;
+    localStorage.setItem('jwt', tokenValue);
   }
 
   logout(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwt');
     this.toastService.showSuccess('Successfully logged out', 'Success');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('jwt');
   }
 
   getToken(): string {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('jwt');
     if (!token) {
       return '';
     }

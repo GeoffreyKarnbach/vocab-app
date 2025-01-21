@@ -21,6 +21,7 @@ import {
 import { UserPageComponent } from './components/pages/user-page/user-page.component';
 import { httpInterceptorProviders } from './interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExerciseComponent } from './components/pages/exercise/exercise.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ImageViewComponent,
     CustomCalendarComponent,
     FooterComponent,
+    ExerciseComponent,
   ],
   imports: [
     BrowserModule,

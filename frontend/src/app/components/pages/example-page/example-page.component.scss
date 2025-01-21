@@ -1,0 +1,75 @@
+.session-history {
+  .summary {
+    margin-bottom: 20px;
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+  }
+
+  .word-statistics {
+    margin-top: 30px;
+
+    .statistics-tables {
+      display: block; /* Default block display */
+      .table-container {
+        margin-bottom: 30px; /* Space between tables */
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 10px;
+
+          th,
+          td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+          }
+
+          th {
+            background-color: #f4f4f4;
+          }
+        }
+      }
+    }
+  }
+
+  .past-sessions {
+    margin-top: 30px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      span {
+        margin: 0 10px;
+      }
+    }
+  }
+}

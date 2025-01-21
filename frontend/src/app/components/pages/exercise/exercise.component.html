@@ -1,0 +1,45 @@
+<div class="exercise-container">
+  <h2>Exercise</h2>
+  <div class="counter">
+    <p>Correct: {{ correctCount }} / {{ totalCount }}</p>
+    <p>Words left: {{ exerciseItems.length - totalCount }}</p>
+  </div>
+
+  <div *ngIf="exerciseItems.length === 0" class="loading">
+    <p>Loading exercise...</p>
+  </div>
+
+  <div *ngIf="exerciseItems.length > 0" class="exercise-item">
+    <p>
+      <strong>Romanian:</strong> {{ exerciseItems[currentItemIndex].romanian }}
+    </p>
+
+    <div *ngIf="options.length > 0" class="options">
+      <button
+        *ngFor="let option of options"
+        (click)="markAnswer(option)"
+        [class.selected]="selectedAnswer === option"
+        [class.correct]="
+          selectedAnswer === option &&
+          exerciseItems[currentItemIndex].english === option
+        "
+        [class.wrong]="
+          selectedAnswer === option &&
+          exerciseItems[currentItemIndex].english !== option
+        "
+        class="option-btn"
+      >
+        {{ option }}
+      </button>
+      <span *ngIf="showTranslations" class="translation">
+        <strong>Answer:</strong> {{ exerciseItems[currentItemIndex].english }}
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="selectedAnswer !== null" class="next-container">
+    <button (click)="showNextWord()" class="btn btn-next">
+      {{ currentItemIndex === exerciseItems.length - 1 ? "Finish" : "Next" }}
+    </button>
+  </div>
+</div>
